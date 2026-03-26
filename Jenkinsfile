@@ -47,14 +47,14 @@ pipeline {
                 sh 'docker run --detach --name=bankmysql --env="MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" -p 3306:3306 mysql'
                 sh 'sleep 20'
             //  sh 'docker exec -i bankmysql mysql -uroot -proot < sql_dump/onlinebanking.sql'
-                sh 'docker exec -i bankmysql mysql -uroot -p${MYSQL_ROOT_PASSWORD} < sql_dump/onlinebanking.sql'
+            //  sh 'docker exec -i bankmysql mysql -uroot -p${MYSQL_ROOT_PASSWORD} < sql_dump/onlinebanking.sql'
             }
         }
         stage('Deploy and Run') {
             steps {
                 echo 'Running Application'
                 sh 'docker stop cloudbank || true && docker rm cloudbank || true'
-                sh 'docker run --detach --name=cloudbank -p 8888:8888 --link bankmysql:localhost -t hendisantika/online-banking:1'
+                sh 'docker run --detach --name=cloudbank -p 8888:8080 --link bankmysql:localhost -t hendisantika/online-banking:1'
             }
         }
     }

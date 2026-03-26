@@ -52,11 +52,6 @@ public class SecurityConfig {
         this.userRepository = userRepository;
     }
 
-//    @Bean(BeanIds.AUTHENTICATION_MANAGER)
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return authenticationManagerBean();
-//    }
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
@@ -89,13 +84,8 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-<<<<<<< HEAD
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsServiceBean());
-=======
-        UserDetailsService uds = userDetailsServiceBean();
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(uds);
->>>>>>> 485d65efd8df91d4e65eaee92dcf8e5c62b119e2
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
