@@ -188,5 +188,8 @@ This project is open source and available under the [MIT License](LICENSE).
 Contributions are welcome! Please feel free to submit a Pull Request.
 "# onlinebankingsystem" 
 "# onlinebankingsystem" 
+<<<<<<< HEAD
 "# onlinebank" 
 "# onlinebank" 
+=======
+>>>>>>> 485d65efd8df91d4e65eaee92dcf8e5c62b119e2
